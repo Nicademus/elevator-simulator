@@ -2,13 +2,20 @@ package kuali;
 
 public class Elevator
 {
-	protected int currentFloor;
-	protected boolean occupied;
-	protected int topfloor;
+	private int carID;
+	private int currentFloor;
+	private int topfloor;
+	private boolean occupied;
+	private ElevatorStatus status;
 
-	public void init( int topfloor )
+
+	public void Elevator( int carID, Building building )
 	{
-		//
+		this.carID = carID;
+		this.currentFloor = 1;
+		this.topfloor = building.floors;
+		this.occupied = false;
+		this.status = ElevatorStatus.available;
 	}
 
 	public void maintanceCycle( )
@@ -16,13 +23,30 @@ public class Elevator
 
 	}
 
-	private void moveUp( )
+	private void move( elevatorDirection direction )
 	{
 		if( currentFloor < topfloor )
-		currentFloor++;
+			currentFloor++;
 
-		// would like to report to messsaging client like kafka or kinesis
+		// would like to report via thread progress
+		// 	or through messsaging client like kafka or kinesis
 		// for testing for now, will write to log
+
+	}
+
+
+	private void doorEvent()
+	{
+
+	}
+
+	private void reportFloor_log(int floor)
+	{
+		//logger.info( ) // elevator number and floor number
+	}
+	
+	private void report_bus( Event event, String message )
+	{
 
 	}
 }
