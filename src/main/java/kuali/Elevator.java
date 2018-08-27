@@ -13,6 +13,7 @@ public class Elevator
 	private boolean occupied;
 	private int trips;
 	private ElevatorStatus status;
+	private elevatorDirection direction;
 	private int maxTrips = 100;
 
 
@@ -31,24 +32,48 @@ public class Elevator
 	}
 
 
-	public boolean moveRequest( int destinationFloor )
+	// either called to the floor from outside the car
+	// or sent to the floor from inside the car
+	public void moveRequest( int destinationFloor )
 	{
 		this.destinationFloor = destinationFloor;
 
 		// if moving in opposite direction
-		// 1. either cancel request
-		// 2. append request to end of current request
+		// 	1. either cancel request
+		// 	2. append request to end of current request
 
-		// assuming no other current request
+		// for now - assuming no other current request
 		int moving = destinationFloor - currentFloor;
 
 		if( moving < 0 )
-			move( elevatorDirection.down );
+			direction = elevatorDirection.down;
 		else if( moving > 0 )
-			move( elevatorDirection.up );
+			direction = elevatorDirection.up;
 		else if( moving == 0 )
+		{
 			openDoor( );
+			return;
+		}
+
+		while( currentFloor != destinationFloor )
+		{
+			if( direction == elevatorDirection.down )
+				moveToFloor( --currentFloor );
+			else if( direction == elevatorDirection.up )
+				moveToFloor( currentFloor++ );
+
+			// check for request on current path
+		}
 	}
+
+	private void moveToFloor( int floor )
+	{
+		reportEvent( ElevatorEvent.movedToFloor, "floor" + floor );
+	}
+
+
+
+
 
 	private void move(elevatorDirection direction )
 	{
@@ -68,15 +93,27 @@ public class Elevator
 		}
 	}
 
-	private void moveToFloor( int floor )
-	{
-		reportEvent( ElevatorEvent.movedToFloor, floor );
-	}
 
-	private void openDoor()
+
+
+	private void openDoor( )
 	{
 		//publish open door event
 		reportEvent( ElevatorEvent.doorOpened, "" );
+
+		//start timer to close door
+
+		// get floor request from panel
+
+
+	}
+
+	private void closeDoor( )
+	{
+		reportEvent( ElevatorEvent.doorClosed, "" );
+
+		if( destinationFloor != currentFloor )
+			moveToFloor( destinationFloor );
 	}
 
 	private void reportEvent( ElevatorEvent event, String message )
