@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8200033e-2fef-47b2-aa30-39f8bb34b4bb" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/kuali/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kuali/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/kuali/Elevator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kuali/Elevator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kuali/ElevatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kuali/ElevatorController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,7 +20,7 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file leaf-file-name="App.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="App.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/kuali/App.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
@@ -29,15 +29,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Elevator.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Elevator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/kuali/Elevator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-352">
-              <caret line="34" column="54" selection-start-line="34" selection-start-column="54" selection-end-line="34" selection-end-column="54" />
+            <state relative-caret-position="413">
+              <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1689#1690#0" expanded="true" />
-                <element signature="e#1751#1752#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -55,8 +53,8 @@
       <file leaf-file-name="ElevatorController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/kuali/ElevatorController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+            <state relative-caret-position="719">
+              <caret line="57" column="80" selection-start-line="57" selection-start-column="80" selection-end-line="57" selection-end-column="80" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#334#335#0" expanded="true" />
@@ -104,10 +102,10 @@
         <option value="$PROJECT_DIR$/src/main/java/kuali/Building.java" />
         <option value="$PROJECT_DIR$/src/main/java/kuali/elevatorDirection.java" />
         <option value="$PROJECT_DIR$/src/main/java/kuali/ElevatorStatus.java" />
-        <option value="$PROJECT_DIR$/src/main/java/kuali/ElevatorController.java" />
         <option value="$PROJECT_DIR$/src/main/java/kuali/ElevatorEvent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/kuali/Elevator.java" />
         <option value="$PROJECT_DIR$/src/main/java/kuali/App.java" />
+        <option value="$PROJECT_DIR$/src/main/java/kuali/ElevatorController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/kuali/Elevator.java" />
       </list>
     </option>
   </component>
@@ -253,15 +251,16 @@
       <option name="presentableId" value="Default" />
       <updated>1535383093598</updated>
       <workItem from="1535383094831" duration="3238000" />
-      <workItem from="1535389241307" duration="3944000" />
+      <workItem from="1535389241307" duration="5501000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7182000" />
+    <option name="totallyTimeSpent" value="8739000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="22" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -316,8 +315,6 @@
           <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1689#1690#0" expanded="true" />
-            <element signature="e#1751#1752#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -379,22 +376,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kuali/Elevator.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/kuali/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-352">
-          <caret line="34" column="54" selection-start-line="34" selection-start-column="54" selection-end-line="34" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1689#1690#0" expanded="true" />
-            <element signature="e#1751#1752#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="289">
+          <caret line="17" column="93" lean-forward="true" selection-start-line="17" selection-start-column="93" selection-end-line="17" selection-end-column="93" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/kuali/ElevatorController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+        <state relative-caret-position="719">
+          <caret line="57" column="80" selection-start-line="57" selection-start-column="80" selection-end-line="57" selection-end-column="80" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#334#335#0" expanded="true" />
@@ -403,10 +395,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/kuali/App.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/kuali/Elevator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="93" lean-forward="true" selection-start-line="17" selection-start-column="93" selection-end-line="17" selection-end-column="93" />
+        <state relative-caret-position="413">
+          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

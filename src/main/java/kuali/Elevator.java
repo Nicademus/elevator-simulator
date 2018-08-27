@@ -4,12 +4,16 @@ import javafx.event.Event;
 
 import java.util.EventListener;
 
+// @EnableAsync
 public class Elevator
 {
 	private int carID;
 	private int currentFloor;
+	private int floorRequest;
 	private int destinationFloor;
+//	private priorityQueue destinationFloors;		// add the destinations to a simple priority queue - based on the current floor and direction
 	private int topfloor;
+	private int firstfloor = 1;
 	private boolean occupied;
 	private int trips;
 	private ElevatorStatus status;
@@ -31,18 +35,32 @@ public class Elevator
 
 	}
 
-
-	// either called to the floor from outside the car
-	// or sent to the floor from inside the car
-	public void moveRequest( int destinationFloor )
+	// called to floor by controller
+	public void CallCar(int floor )
 	{
-		this.destinationFloor = destinationFloor;
-
-		// if moving in opposite direction
+		this.floorRequest = destinationFloor;
+		// validation: if moving in opposite direction
 		// 	1. either cancel request
 		// 	2. append request to end of current request
 
-		// for now - assuming no other current request
+		if(this.destinationFloor == -1)
+		{
+			this.destinationFloor = floorRequest;
+			moveRequest( floorRequest );
+		}
+		else
+		{
+			// add to queue
+		}
+	}
+
+
+	// run this in a seperate thread
+	// button inside elevator pushed
+	// @async
+	public void moveRequest( int destinationFloor )
+	{
+		occupied = true;
 		int moving = destinationFloor - currentFloor;
 
 		if( moving < 0 )
@@ -55,23 +73,35 @@ public class Elevator
 			return;
 		}
 
-		while( currentFloor != destinationFloor )
+		while( currentFloor != destinationFloor )		// with this threaded, the destinationFloor could be updated in transit to pick up another person going the same direction
 		{
 			if( direction == elevatorDirection.down )
 				moveToFloor( --currentFloor );
 			else if( direction == elevatorDirection.up )
 				moveToFloor( currentFloor++ );
 
+
 			// check for request on current path
+			// if a new request occurs
+		}
+
+		if(currentFloor == destinationFloor )		// check in case the while loop exited by interrupt, etc.
+		{
+			if( ++trips == maxTrips )
+				status = ElevatorStatus.maintenance;
+
+			occupied = false;
+			openDoor( );
 		}
 	}
 
 	private void moveToFloor( int floor )
 	{
+		if( floor <= topfloor && floor >= firstfloor )
+			currentFloor = floor;
+
 		reportEvent( ElevatorEvent.movedToFloor, "floor" + floor );
 	}
-
-
 
 
 
@@ -94,18 +124,12 @@ public class Elevator
 	}
 
 
-
-
 	private void openDoor( )
 	{
 		//publish open door event
 		reportEvent( ElevatorEvent.doorOpened, "" );
 
 		//start timer to close door
-
-		// get floor request from panel
-
-
 	}
 
 	private void closeDoor( )

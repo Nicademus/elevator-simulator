@@ -30,6 +30,13 @@ public class ElevatorController implements Subscriber
 		init( minTotal, minTotal );
 	}
 
+	public void getUpdates()
+	{
+		//subscribe to message bus to get elevator events
+
+		// update elevator list stats based on events
+	}
+
 	public ElevatorController( int totalFloors, int totalElevators)
 	{
 		init( totalFloors, totalElevators );
@@ -40,6 +47,17 @@ public class ElevatorController implements Subscriber
 	 */
 	public void requestElevator( int requestingFloor, elevatorDirection direction )
 	{
+		// is there an elevator already moving than will pass that floor?
+		//
+
+		// select the closes unocupied elevator
+
 		for( Elevator : availableElevators )
+		{
+			//elevator -> moving, currentfloor < requestingFloor and moving up
+			//elevator -> moving, currentFloor > requestingFloor and moving down
+		}
+
+
 	}
 }
