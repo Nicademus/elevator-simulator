@@ -1,12 +1,19 @@
 package kuali;
 
+import javafx.event.Event;
+
+import java.util.EventListener;
+
 public class Elevator
 {
 	private int carID;
 	private int currentFloor;
+	private int destinationFloor;
 	private int topfloor;
 	private boolean occupied;
+	private int trips;
 	private ElevatorStatus status;
+	private int maxTrips = 100;
 
 
 	public void Elevator( int carID, Building building )
@@ -23,30 +30,57 @@ public class Elevator
 
 	}
 
-	private void move( elevatorDirection direction )
+
+	public boolean moveRequest( int destinationFloor )
+	{
+		this.destinationFloor = destinationFloor;
+
+		// if moving in opposite direction
+		// 1. either cancel request
+		// 2. append request to end of current request
+
+		// assuming no other current request
+		int moving = destinationFloor - currentFloor;
+
+		if( moving < 0 )
+			move( elevatorDirection.down );
+		else if( moving > 0 )
+			move( elevatorDirection.up );
+		else if( moving == 0 )
+			openDoor( );
+	}
+
+	private void move(elevatorDirection direction )
 	{
 		if( currentFloor < topfloor )
 			currentFloor++;
 
-		// would like to report via thread progress
-		// 	or through messsaging client like kafka or kinesis
-		// for testing for now, will write to log
+		//publish move event to bus
 
+		// if destination floor = current floor
+		openDoor( );
+
+		// check number of trips
+		if( trips >= maxTrips )
+		{
+			status = ElevatorStatus.maintenance;
+			// publish maintenance event to bus
+		}
 	}
 
-
-	private void doorEvent()
+	private void moveToFloor( int floor )
 	{
-
+		reportEvent( ElevatorEvent.movedToFloor, floor );
 	}
 
-	private void reportFloor_log(int floor)
+	private void openDoor()
 	{
-		//logger.info( ) // elevator number and floor number
+		//publish open door event
+		reportEvent( ElevatorEvent.doorOpened, "" );
 	}
-	
-	private void report_bus( Event event, String message )
-	{
 
+	private void reportEvent( ElevatorEvent event, String message )
+	{
+		// publish event to message bus
 	}
 }

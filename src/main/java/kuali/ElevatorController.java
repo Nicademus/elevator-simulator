@@ -3,7 +3,7 @@ package kuali;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ElevatorController
+public class ElevatorController implements Subscriber
 {
 	private final int minTotal = 1;
 
